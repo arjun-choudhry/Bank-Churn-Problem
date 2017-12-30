@@ -52,3 +52,16 @@ neuralClassifier.add(Dense(6, kernel_initializer='uniform', activation='relu'))
 
 # Building the output layer
 neuralClassifier.add(Dense(1, kernel_initializer='uniform', activation='sigmoid'))
+
+# Compiling the ANN, applying stochastic gradient descent on ANN
+neuralClassifier.compile(optimizer = 'adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Fitting the ANN to the training set
+neuralClassifier.fit(X_train,y_train,batch_size=10, epochs=100)
+
+# Predicting result
+y_pred = neuralClassifier.predict(X_test)
+
+# Making the confusion matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test,y_pred)
