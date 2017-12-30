@@ -34,3 +34,21 @@ X = sc_X.fit_transform(X)
 
 from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=0)
+
+
+# Importing Keras library and packages
+import keras
+
+# Importing the 2 modules, sequential module to initialize the neural network and the dense module that is used to build the layers of our neural network
+from keras.models import Sequential
+from keras.layers import Dense
+
+# Initializing the ANN
+neuralClassifier = Sequential()
+
+# Building the hidden layers
+neuralClassifier.add(Dense(6, kernel_initializer='uniform', activation='relu', input_dim = 11))
+neuralClassifier.add(Dense(6, kernel_initializer='uniform', activation='relu'))
+
+# Building the output layer
+neuralClassifier.add(Dense(1, kernel_initializer='uniform', activation='sigmoid'))
