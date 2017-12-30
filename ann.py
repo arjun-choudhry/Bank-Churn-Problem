@@ -60,7 +60,10 @@ neuralClassifier.compile(optimizer = 'adam', loss='binary_crossentropy', metrics
 neuralClassifier.fit(X_train,y_train,batch_size=10, epochs=100)
 
 # Predicting result
-y_pred = neuralClassifier.predict(X_test)
+# This gives the probability
+y_pred_probability = neuralClassifier.predict(X_test)
+# Converting the probabilities to 1/0, by taking a threshold of 0.5
+y_pred = (y_pred_probability > 0.5)
 
 # Making the confusion matrix
 from sklearn.metrics import confusion_matrix
